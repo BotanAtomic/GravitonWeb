@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+
+<head>
+    <title th:text="'Graviton | ' + ${name}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/headers/header1.css" media="all"/>
+    <link rel="shortcut icon" href="../assets/img/favicon.ico"/>
+    <link rel="stylesheet prefetch" href="../assets/plugins/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../assets/plugins/flexslider/flexslider.css"/>
+    <link rel="stylesheet" href="../assets/plugins/bxslider/jquery.bxslider.css"/>
+    <link rel="stylesheet" href="../assets/plugins/horizontal-parallax/css/horizontal-parallax.css"/>
+    <link rel="stylesheet" href="../assets/plugins/nouislider/jquery.nouislider.min.css"/>
+    <link rel="stylesheet" href="../assets/plugins/loading-bar/loading-bar.min.css"/>
+    <link rel="stylesheet" href="../assets/js/ngModules/ng-table/ng-table.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/themes/default.css" media="all"/>
+    <link rel="stylesheet" href="../assets/css/themes/headers/header1-blue.css" id="style_color-header-1"/>
+    <script type="text/javascript" src="../assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="../assets/js/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/nouislider.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/ui-bootstrap-0.10.0.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/angular-translate.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/angular-translate-loader-static-files.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/textAngular.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/angularjs-gravatardirective.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/ng-table/ng-table.min.js"></script>
+    <script src="../angular-feeds/angular-feeds.js"></script>
+    <script type="text/javascript" src="../assets/plugins/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/nouislider/jquery.nouislider.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/loading-bar/loading-bar.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/hideseek/jquery.hideseek.min.js"></script>
+    <script type="text/javascript" src="../assets/js/graviton.js"></script>
+    <script type="text/javascript" src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/hover-dropdown.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/back-to-top.js"></script>
+    <script type="text/javascript" src="../assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/parallax-slider/js/modernizr.js"></script>
+    <script type="text/javascript" src="../assets/plugins/horizontal-parallax/js/sequence.jquery-min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/horizontal-parallax/js/horizontal-parallax.js"></script>
+    <script type="text/javascript" src="../assets/plugins/bxslider/jquery.bxslider.js"></script>
+    <script type="text/javascript" src="../assets/js/app.js"></script>
+    <script type="text/javascript" src="../assets/js/pages/index.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+            App.initSliders();
+        });
+    </script>
+</head>
+
+<body>
+
+<div th:remove="tag" th:utext="${top}"></div>
+<div th:remove="tag" th:utext="${headerContent}"></div>
+<div th:remove="tag" th:utext="${breadCrumbs}"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+            <form class="reg-page" autocomplete="off" action="" th:action="@{/register/}" th:object="${account}" method="post">
+
+                <div class="reg-header">
+                    <h2>Formulaire d'inscription</h2>
+                </div>
+
+
+                <div th:class="${#fields.hasErrors('*')} ? 'alert alert-danger' : ''">
+                    <b>
+                        <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                    </b>
+                </div>
+
+                <div class="input-group margin-bottom-20" th:classappend="${#fields.hasErrors('name')} ? 'has-error' : ''">
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                    <input th:field="*{name}" id="name" name="name" placeholder="Identifiant" class="form-control"
+                           required>
+
+                </div>
+
+                <div class="input-group margin-bottom-20" th:classappend="${#fields.hasErrors('password')} ? 'has-error' : ''">
+                    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                    <input type="password" th:field="*{password}" id="password" name="password"
+                           placeholder="Mot de passe" class="form-control"
+                           ng-model="formData.password" autocomplete="off" required>
+                </div>
+
+
+                <div class="input-group margin-bottom-20"
+                     th:classappend="${#fields.hasErrors('password')} ? 'has-error' : ''">
+                    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                    <input th:field="*{confirmedPassword}" id="confirmedPassword" type="password"
+                           placeholder="Confirmation du mot de passe"
+                           class="form-control" ng-model="formData.password2" autocomplete="off" required>
+                </div>
+
+                <hr>
+
+                <div class="input-group margin-bottom-20"
+                     th:classappend="${#fields.hasErrors('question')} ? 'has-error' : ''">
+                    <span class="input-group-addon"><i class="fa fa-question fa-fw"></i></span>
+                    <input th:field="*{question}" id="question" placeholder="Question secrète"
+                           class="form-control"
+                           ng-model="formData.question" required>
+                </div>
+
+                <div class="input-group margin-bottom-20"
+                     th:classappend="${#fields.hasErrors('answer')} ? 'has-error' : ''">
+                    <span class="input-group-addon"><i class="fa fa-reply fa-fw"></i></span>
+                    <input th:field="*{answer}" id="answer" placeholder="Réponse secrète"
+                           class="form-control"
+                           ng-model="formData.answer" required>
+                </div>
+
+                <hr>
+
+                <div class="input-group margin-bottom-20"
+                     th:classappend="${#fields.hasErrors('email')} ? 'has-error' : ''">
+                    <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                    <input th:field="*{email}" id="email" type="email" placeholder="Adresse email" class="form-control"
+                           ng-model="formData.email" required>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <i><p>En vous inscrivant, vous acceptez nos <a style="color : red;" target="_blank"
+                                                                       href="../cgv/">C.G.V</a> &
+                            <a style="color : red;" target="_blank" href="../cgu/">C.G.U</a></p></i>
+                    </div>
+                    <div class="col-md-6">
+                        <button id="submitButton" class="btn btn-u pull-right" type="submit">S'inscrire</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div><!--/row-->
+</div>
+
+<div class="footer">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="col-md-4 md-margin-bottom-40">
+                <div class="headline"><h2>Le staff</h2></div>
+                <p class="margin-bottom-25 md-margin-bottom-40">
+                    Développeurs
+                    <br/>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top"
+                          tooltip="Administrateur - Développeur - Gestionnaire IT">Botan</span>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Administrateur - Développeur">Botan</span>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Community Manager">Botan</span>
+                    <br/>
+                    <br/>
+                    Moderateurs
+                    <br/>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Responsable Jeu">Botan</span>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Maître de Jeu">Botan</span>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Maître de Jeu">Botan</span>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="headline"><h3>Contactez-nous</h3></div>
+                <p>Une question sans réponse ? <br/>En savoir plus sur nos services ?<br/> Prenez soin de consulter
+                    auparavant la FAQ : les réponses que vous cherchez y figurent peut-être déjà !</p>
+                <p><i class="fa fa-envelope"></i> <a href="../support/">SUPPORT</a>&nbsp;&nbsp;
+                    <i class="fa fa-lightbulb-o"></i> <a href="../cgv/">C.G.V</a>&nbsp;&nbsp;
+                    <i class="fa fa-comment"></i> <a href="../cgu/">C.G.U</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="footer">
+    <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <div class="container text-center">
+            <br/>
+            <img src="../assets/img/logo.png" align="middle"/>
+            <br/>
+            <p style="color:black;"> &copy; 2017 Graviton. Tout droits reservés. </p>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>

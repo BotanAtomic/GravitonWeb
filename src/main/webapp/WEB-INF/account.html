@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+
+<head>
+    <title th:text="'Graviton | ' + ${name}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/headers/header1.css" media="all"/>
+    <link rel="shortcut icon" href="../assets/img/favicon.ico"/>
+    <link rel="stylesheet prefetch" href="../assets/plugins/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../assets/plugins/flexslider/flexslider.css"/>
+    <link rel="stylesheet" href="../assets/plugins/bxslider/jquery.bxslider.css"/>
+    <link rel="stylesheet" href="../assets/plugins/horizontal-parallax/css/horizontal-parallax.css"/>
+    <link rel="stylesheet" href="../assets/plugins/nouislider/jquery.nouislider.min.css"/>
+    <link rel="stylesheet" href="../assets/plugins/loading-bar/loading-bar.min.css"/>
+    <link rel="stylesheet" href="../assets/js/ngModules/ng-table/ng-table.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/themes/default.css" media="all"/>
+    <link rel="stylesheet" href="../assets/css/themes/headers/header1-blue.css" id="style_color-header-1"/>
+    <script type="text/javascript" src="../assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="../assets/js/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/nouislider.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/ui-bootstrap-0.10.0.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/angular-translate.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/angular-translate-loader-static-files.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/textAngular.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/angularjs-gravatardirective.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/ng-table/ng-table.min.js"></script>
+    <script src="../angular-feeds/angular-feeds.js"></script>
+    <script type="text/javascript" src="../assets/plugins/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/nouislider/jquery.nouislider.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/loading-bar/loading-bar.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/hideseek/jquery.hideseek.min.js"></script>
+    <script type="text/javascript" src="../assets/js/graviton.js"></script>
+    <script type="text/javascript" src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/hover-dropdown.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/back-to-top.js"></script>
+    <script type="text/javascript" src="../assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/parallax-slider/js/modernizr.js"></script>
+    <script type="text/javascript" src="../assets/plugins/horizontal-parallax/js/sequence.jquery-min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/horizontal-parallax/js/horizontal-parallax.js"></script>
+    <script type="text/javascript" src="../assets/plugins/bxslider/jquery.bxslider.js"></script>
+    <script type="text/javascript" src="../assets/js/app.js"></script>
+    <script type="text/javascript" src="../assets/js/pages/index.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+            App.initSliders();
+        });
+    </script>
+</head>
+
+<body>
+
+<div th:remove="tag" th:utext="${top}"></div>
+<div th:remove="tag" th:utext="${headerContent}"></div>
+<div th:remove="tag" th:utext="${breadCrumbs}"></div>
+
+<!-- Modal -->
+<div class="modal" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="exampleModalLabel">Changement du mot de passe</h4>
+                <br/>
+                <center><h6 class="modal-title" id="result" style="color:green"></h6></center>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="lastPassword" class="control-label">Ancien mot de passe :</label>
+                        <input type="password" class="form-control" id="lastPassword">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword" class="control-label">Nouveau mot de passe :</label>
+                        <input type="password" class="form-control" id="newPassword">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" onClick="javascript:changePassword()">Confirmer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row-fluid">
+        <div class="panel-group acc-v1 margin-bottom-40" id="accordion">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse"
+                           href="#account">
+                            <i><b>Mon compte</b></i>
+                        </a>
+                    </h4>
+                </div>
+
+
+                <div id="account" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <p>Nom de compte : <b><i th:text="${account.name}"></i></b></p>
+                        <p>Mot de passe : <b><i th:text="${password}"></i></b>&nbsp;&nbsp;
+                            <a class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal">Modifier</a>
+                        </p>
+                        <p>Pseudo : <b><i th:text="${account.nickname}"></i></i></b></p>
+                        <p>Points boutiques : <b><i th:text="${account.points}"></i></b></p>
+                        <p>Email : <b><i th:text="${account.email}"></i></b></p>
+                        <p>Dernière connexion le : <b><i th:text="${lastConnection}"></i></b></p>
+                        <p>Nombre de personnages : <b><i th:text="${account.players.size()}"></i></b>
+                            &nbsp;&nbsp;
+                            <a class="btn btn-xs btn-primary" data-toggle="collapse" href="#players">Consulter</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse"
+                           href="#players">
+                            <i><b>Personnages</b></i>
+                        </a>
+                    </h4>
+                </div>
+                <div id="players" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class=\"table-responsive\">
+                            <table class="table table-condensed table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th class=\"col-sm-4\">Personnage</th>
+                                    <th class=\"col-sm-1\">Classe</th>
+                                    <th class=\"col-sm-1\">Niveau</th>
+                                    <th class=\"col-sm-2\">Experience</th>
+                                    <th class=\"col-sm-1\">Alignement</th>
+                                    <th class=\"col-sm-1\">Honneur</th>
+                                    <th class=\"col-sm-1\">Serveur</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <th:block th:each="player : ${account.players}">
+                                    <tr>
+                                        <td th:text="${player.name}"></td>
+                                        <td><img th:src="'../assets/img/gfx/' + ${player.getLook()} + '.png' "/></td>
+                                        <td th:text="${player.level}"></td>
+                                        <td th:text="${player.experience}"></td>
+                                        <td><img th:src="'../assets/img/align/' + ${player.alignment} + '.jpg' "/></td>
+                                        <td th:text="${player.honor}"></td>
+                                        <td th:text="${servers[player.server]}"></td>
+                                    </tr>
+                                </th:block>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse"
+                           href="#shop">
+                            <i><b>Boutique</b></i>
+                        </a>
+                    </h4>
+                </div>
+                <div id="shop" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>TODO : Boutique paiement.....</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="col-md-4 md-margin-bottom-40">
+                <div class="headline"><h2>Le staff</h2></div>
+                <p class="margin-bottom-25 md-margin-bottom-40">
+                    Développeurs
+                    <br/>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top"
+                          tooltip="Administrateur - Développeur - Gestionnaire IT">Botan</span>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Administrateur - Développeur">Botan</span>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Community Manager">Botan</span>
+                    <br/>
+                    <br/>
+                    Moderateurs
+                    <br/>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Responsable Jeu">Botan</span>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Maître de Jeu">Botan</span>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Maître de Jeu">Botan</span>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="headline"><h3>Contactez-nous</h3></div>
+                <p>Une question sans réponse ? <br/>En savoir plus sur nos services ?<br/> Prenez soin de consulter
+                    auparavant la FAQ : les réponses que vous cherchez y figurent peut-être déjà !</p>
+                <p><i class="fa fa-envelope"></i> <a href="../support/">SUPPORT</a>&nbsp;&nbsp;
+                    <i class="fa fa-lightbulb-o"></i> <a href="../cgv/">C.G.V</a>&nbsp;&nbsp;
+                    <i class="fa fa-comment"></i> <a href="../cgu/">C.G.U</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="footer">
+    <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <div class="container text-center">
+            <br/>
+            <img src="../assets/img/logo.png" align="middle"/>
+            <br/>
+            <p style="color:black;"> &copy; 2017 Graviton. Tout droits reservés. </p>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+<script>
+
+    function changePassword() {
+        var lastPassword = $("#lastPassword").val();
+        var newPassword = $("#newPassword").val();
+        var resultText = $("#result");
+
+        if (lastPassword === newPassword) {
+            resultText.prop("style", "color:red");
+            resultText.text("Les mots de passes sont identiques");
+        } else if (newPassword.length < 4) {
+            resultText.prop("style", "color:red");
+            resultText.text("Le nouveau mot de passe est trop court");
+        } else {
+            request("..\\changePassword?password=" + newPassword + "&lastPassword=" + lastPassword, function (data) {
+                if (data === "success") {
+                    resultText.prop("style", "color:green");
+                    resultText.text("Votre mot de passe à été mis à jours avec succès, veuillez vous reconnecter");
+                    setTimeout(function () {
+                        reconnect();
+                    }, 3000);
+
+                } else if (data === "password") {
+                    resultText.prop("style", "color:red");
+                    resultText.text("Mot de passe actuel incorrect");
+                } else {
+                    resultText.prop("style", "color:red");
+                    resultText.text("Une erreur s'est produite, veuillez contacter le support");
+                }
+            });
+        }
+
+    }
+
+</script>
+
+
+</html>

@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+
+<head>
+    <title th:text="'Graviton | ' + ${name}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./assets/plugins/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="./assets/css/headers/header1.css" media="all"/>
+    <link rel="shortcut icon" href="./assets/img/favicon.ico"/>
+    <link rel="stylesheet prefetch" href="./assets/plugins/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="./assets/plugins/flexslider/flexslider.css"/>
+    <link rel="stylesheet" href="./assets/plugins/bxslider/jquery.bxslider.css"/>
+    <link rel="stylesheet" href="./assets/plugins/horizontal-parallax/css/horizontal-parallax.css"/>
+    <link rel="stylesheet" href="./assets/plugins/nouislider/jquery.nouislider.min.css"/>
+    <link rel="stylesheet" href="./assets/plugins/loading-bar/loading-bar.min.css"/>
+    <link rel="stylesheet" href="./assets/js/ngModules/ng-table/ng-table.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./assets/css/themes/default.css" media="all"/>
+    <link rel="stylesheet" href="./assets/css/themes/headers/header1-blue.css" id="style_color-header-1"/>
+    <script type="text/javascript" src="./assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="./assets/js/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="./assets/js/ngModules/nouislider.min.js"></script>
+    <script type="text/javascript" src="./assets/js/ngModules/ui-bootstrap-0.10.0.min.js"></script>
+    <script type="text/javascript" src="./assets/js/ngModules/angular-translate.min.js"></script>
+    <script type="text/javascript" src="./assets/js/ngModules/angular-translate-loader-static-files.min.js"></script>
+    <script type="text/javascript" src="./assets/js/ngModules/textAngular.min.js"></script>
+    <script type="text/javascript" src="./assets/js/ngModules/angularjs-gravatardirective.min.js"></script>
+    <script type="text/javascript" src="./assets/js/ngModules/ng-table/ng-table.min.js"></script>
+    <script src="../angular-feeds/angular-feeds.js"></script>
+    <script type="text/javascript" src="./assets/plugins/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="./assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="./assets/plugins/nouislider/jquery.nouislider.min.js"></script>
+    <script type="text/javascript" src="./assets/plugins/loading-bar/loading-bar.min.js"></script>
+    <script type="text/javascript" src="./assets/plugins/hideseek/jquery.hideseek.min.js"></script>
+    <script type="text/javascript" src="./assets/js/graviton.js"></script>
+    <script type="text/javascript" src="./assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./assets/plugins/hover-dropdown.min.js"></script>
+    <script type="text/javascript" src="./assets/plugins/back-to-top.js"></script>
+    <script type="text/javascript" src="./assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="./assets/plugins/parallax-slider/js/modernizr.js"></script>
+    <script type="text/javascript" src="./assets/plugins/horizontal-parallax/js/sequence.jquery-min.js"></script>
+    <script type="text/javascript" src="./assets/plugins/horizontal-parallax/js/horizontal-parallax.js"></script>
+    <script type="text/javascript" src="./assets/plugins/bxslider/jquery.bxslider.js"></script>
+    <script type="text/javascript" src="./assets/js/app.js"></script>
+    <script type="text/javascript" src="./assets/js/pages/index.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+            App.initSliders();
+        });
+    </script>
+</head>
+
+<body>
+
+<div th:remove="tag" th:utext="${top}"></div>
+<div th:remove="tag" th:utext="${headerContent}"></div>
+<div th:remove="tag" th:utext="${breadCrumbs}"></div>
+
+<div class="container">
+    <div class="row-fluid privacy">
+        <p>
+            Les conditions générales de vente détaillées ci-dessous, régissent les relations contractuelles entre tout
+            utilisateur du site arkalys.com
+            Le site ainsi que l’utilisation de ses serveurs de jeu est gratuit, sans obligation d’achat.
+            <br/><br/>
+            Arkalys.com se réserve le droit de modifier à tout moment les présentes conditions générales de ventes qui
+            devront, et pourront être consultées à tout moment par les utilisateurs avant tout achat sur le site.
+            L’utilisateur doit être majeur ou disposer d’une autorisation écrite de son représentant légal avant de
+            faire tout achat sur le site d'arkalys.com. Arkalys se réserve le droit de réclamer à tout moment à
+            l’utilisateur ladite autorisation.
+        </p>
+
+        <hr>
+
+        <p class="lead">
+            <em>Processus de commande</em>
+        </p>
+        <p>
+            Après s’être identifié à son compte arkalys.com, le membre dispose du lien Boutique dans le menu du site
+            arkalys.com. Il accède ainsi aux différents moyens de paiements et forfaits proposés.
+            <br/>
+            Le membre a la possibilité d’utiliser le service Audiotel ou Paypal afin d’effectuer ses achats.
+            <br/><br/>
+            Pour utiliser le service Audiotel, l'utilisateur doit téléphoner à un numéro surtaxé, entrer le code obtenu
+            et valider sa commande.
+            <br/>
+            S’il décide de payer avec paypal, un curseur affichant les tarifs lui est proposé et il est libre de régler
+            ses achats avec son compte Paypal s’il en possède un, ou directement avec sa carte bancaire en utilisant le
+            service paypal adéquat.
+            <br/><br/>
+            Le fait de confirmer la commande constitue une acceptation irrévocable de la commande qui ne peut être
+            remise en cause que dans les limites prévues dans les présentes conditions générales de vente.
+            <br/>
+            Le paiement est réalisé conformément aux Conditions Générales du Système de Paiement.
+        </p>
+
+        <hr>
+
+        <p class="lead">
+            <em>Livraison</em>
+        </p>
+        <p>
+            Les Jetons boutique achetés via le système audiotel mis en place par arkalys.com sont livrés instantanément
+            sur le compte de l’utilisateur.
+            <br/>
+            Les Crédits boutique achetés via PAYPAL sont livrés dans un délai maximum de 48h après réception du paiement
+            par arkalys.com.
+            <br/>
+            En cas de paiement différé, les Crédits boutiques seront livrés une fois le paiement reçu par arkalys.com.
+        </p>
+
+        <hr>
+
+        <p class="lead">
+            <em>Tarifs</em>
+        </p>
+        <p>
+            Les tarifs de nos produits sont ceux indiqués sur le site à la date de la commande. Ils sont indiqués toutes
+            taxes comprises. arkalys.com se réserve le droit de modifier ses prix à tout moment.
+        </p>
+
+        <hr>
+
+        <p class="lead">
+            <em>Rétractation</em>
+        </p>
+        <p>
+            En achetant des jetons sur arkalys.com vous renoncez à votre droit de rétractation, le bien étant immatériel
+            l'article L.121-20 du Code de la Consommation n'est pas appliquable.
+        </p>
+
+        <hr>
+
+        <p class="lead">
+            <em>Preuve des transactions</em>
+        </p>
+        <p>
+            Les données enregistrées par #WEBSITE concernant les transactions Audiotel / Paypal avec l'utilisateur
+            constitue une preuve de transaction.
+        </p>
+
+    </div>
+</div>
+
+<div class="footer">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="col-md-4 md-margin-bottom-40">
+                <div class="headline"><h2>Le staff</h2></div>
+                <p class="margin-bottom-25 md-margin-bottom-40">
+                    Développeurs
+                    <br/>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top"
+                          tooltip="Administrateur - Développeur - Gestionnaire IT">Botan</span>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Administrateur - Développeur">Botan</span>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Community Manager">Botan</span>
+                    <br/>
+                    <br/>
+                    Moderateurs
+                    <br/>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Responsable Jeu">Botan</span>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Maître de Jeu">Botan</span>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Maître de Jeu">Botan</span>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="headline"><h3>Contactez-nous</h3></div>
+                <p>Une question sans réponse ? <br/>En savoir plus sur nos services ?<br/> Prenez soin de consulter
+                    auparavant la FAQ : les réponses que vous cherchez y figurent peut-être déjà !</p>
+                <p><i class="fa fa-envelope"></i> <a href="../support/">SUPPORT</a>&nbsp;&nbsp;
+                    <i class="fa fa-lightbulb-o"></i> <a href="../cgv/">C.G.V</a>&nbsp;&nbsp;
+                    <i class="fa fa-comment"></i> <a href="../cgu/">C.G.U</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="footer">
+    <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <div class="container text-center">
+            <br/>
+            <img src="./assets/img/logo.png" align="middle"/>
+            <br/>
+            <p style="color:black;"> &copy; 2017 Graviton. Tout droits reservés. </p>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+
+<head>
+    <title th:text="'Graviton | ' + ${name}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/headers/header1.css" media="all"/>
+    <link rel="shortcut icon" href="../assets/img/favicon.ico"/>
+    <link rel="stylesheet prefetch" href="../assets/plugins/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../assets/plugins/flexslider/flexslider.css"/>
+    <link rel="stylesheet" href="../assets/plugins/bxslider/jquery.bxslider.css"/>
+    <link rel="stylesheet" href="../assets/plugins/horizontal-parallax/css/horizontal-parallax.css"/>
+    <link rel="stylesheet" href="../assets/plugins/nouislider/jquery.nouislider.min.css"/>
+    <link rel="stylesheet" href="../assets/plugins/loading-bar/loading-bar.min.css"/>
+    <link rel="stylesheet" href="../assets/js/ngModules/ng-table/ng-table.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/themes/default.css" media="all"/>
+    <link rel="stylesheet" href="../assets/css/themes/headers/header1-blue.css" id="style_color-header-1"/>
+    <script type="text/javascript" src="../assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="../assets/js/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/nouislider.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/ui-bootstrap-0.10.0.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/angular-translate.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/angular-translate-loader-static-files.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/textAngular.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/angularjs-gravatardirective.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ngModules/ng-table/ng-table.min.js"></script>
+    <script src="../angular-feeds/angular-feeds.js"></script>
+    <script type="text/javascript" src="../assets/plugins/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/nouislider/jquery.nouislider.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/loading-bar/loading-bar.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/hideseek/jquery.hideseek.min.js"></script>
+    <script type="text/javascript" src="../assets/js/graviton.js"></script>
+    <script type="text/javascript" src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/hover-dropdown.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/back-to-top.js"></script>
+    <script type="text/javascript" src="../assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/parallax-slider/js/modernizr.js"></script>
+    <script type="text/javascript" src="../assets/plugins/horizontal-parallax/js/sequence.jquery-min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/horizontal-parallax/js/horizontal-parallax.js"></script>
+    <script type="text/javascript" src="../assets/plugins/bxslider/jquery.bxslider.js"></script>
+    <script type="text/javascript" src="../assets/js/app.js"></script>
+    <script type="text/javascript" src="../assets/js/pages/index.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+            App.initSliders();
+        });
+    </script>
+</head>
+
+<body>
+
+<div th:remove="tag" th:utext="${top}"></div>
+<div th:remove="tag" th:utext="${headerContent}"></div>
+<div th:remove="tag" th:utext="${breadCrumbs}"></div>
+
+
+<div class="sub_container">
+    <form id="contact" action="javascript:send()" method="get">
+        <h3>Contacter le support</h3>
+        <fieldset>
+            <input id="name" placeholder="Nom et Prénom" type="text" tabindex="1" required="" autofocus=""/>
+        </fieldset>
+        <br/>
+        <fieldset>
+            <input id="mail" placeholder="Adresse mail" type="email" tabindex="2" required=""/>
+        </fieldset>
+        <br/>
+        <fieldset>
+            <input id="subject" placeholder="Sujet" type="text" tabindex="3" required=""/>
+        </fieldset>
+        <br/>
+        <fieldset>
+            <textarea id="message" placeholder="Message" tabindex="4" required=""></textarea>
+        </fieldset>
+        <br/>
+        <fieldset>
+            <button name="submit" type="submit" id="contact-submit">Envoyer</button>
+        </fieldset>
+    </form>
+</div>
+
+<script>
+    function send() {
+        var fullName = document.getElementById("name").value;
+        var email = document.getElementById("mail").value;
+        var subject = document.getElementById("subject").value;
+        var message = document.getElementById("message").value;
+
+        post("..\\sendSupportMessage/", "name=" + fullName + "&email=" + email + "&subject=" + subject + "&message=" + message, function (secondResponseData) {
+        });
+
+        alert("Votre message a bien été envoyé, nous y répondrons dès que possible");
+
+        window.location.href = window.location.protocol + '//' + window.location.host + window.location.pathname;
+
+        var event = setTimeout(function () {
+            document.getElementById("result").innerHTML = "";
+            clearTimeout(event);
+        }, 5000);
+
+
+    }
+
+</script>
+
+<div class="footer">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="col-md-4 md-margin-bottom-40">
+                <div class="headline"><h2>Le staff</h2></div>
+                <p class="margin-bottom-25 md-margin-bottom-40">
+                    Développeurs
+                    <br/>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top"
+                          tooltip="Administrateur - Développeur - Gestionnaire IT">Botan</span>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Administrateur - Développeur">Botan</span>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Community Manager">Botan</span>
+                    <br/>
+                    <br/>
+                    Moderateurs
+                    <br/>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Responsable Jeu">Botan</span>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Maître de Jeu">Botan</span>
+                    <span class="btn btn-u btn-primary" tooltip-placement="top" tooltip="Maître de Jeu">Botan</span>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="headline"><h3>Contactez-nous</h3></div>
+                <p>Une question sans réponse ? <br/>En savoir plus sur nos services ?<br/> Prenez soin de consulter
+                    auparavant la FAQ : les réponses que vous cherchez y figurent peut-être déjà !</p>
+                <p><i class="fa fa-envelope"></i> <a href="../support/">SUPPORT</a>&nbsp;&nbsp;
+                    <i class="fa fa-lightbulb-o"></i> <a href="../cgv/">C.G.V</a>&nbsp;&nbsp;
+                    <i class="fa fa-comment"></i> <a href="../cgu/">C.G.U</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="footer">
+    <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <div class="container text-center">
+            <br/>
+            <img src="../assets/img/logo.png" align="middle"/>
+            <br/>
+            <p style="color:black;"> &copy; 2017 Graviton. Tout droits reservés. </p>
+        </div>
+    </div>
+</footer>
+
+
+
+</body>
+
+</html>
